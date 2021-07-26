@@ -1,0 +1,95 @@
+---
+title: "Developing Data Products - Assignment Week 4 Pitch"
+author: "Surabh"
+date: "7/26/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+## Objective
+This peer assessed assignment has two parts. First, you will create a Shiny application and deploy it on Rstudio's servers. Second, you will use Slidify or Rstudio Presenter to prepare a reproducible pitch presentation about your application.
+
+*Your Shiny Application*
+
+1. Write a shiny application with associated supporting documentation. The documentation should be thought of as whatever a user will need to get started using your application.
+2. Deploy the application on Rstudio's shiny server
+3. Share the application link by pasting it into the provided text box
+4. Share your server.R and ui.R code on github
+
+## Objective - Grading Criteria
+The application must include the following:
+
+1. Some form of input (widget: textbox, radio button, checkbox, ...)
+2. Some operation on the ui input in sever.R
+3. Some reactive output displayed as a result of server calculations
+4. You must also include enough documentation so that a novice user could use your application.
+5. The documentation should be at the Shiny website itself. Do not post to an external link.
+
+## Data
+
+For creating this Shiny application, we use the mtcars dataset.
+The data can be found [here](https://class.coursera.org/regmods-008):
+
+[https://class.coursera.org/regmods-008](https://class.coursera.org/regmods-008)
+Source:Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391-411.
+
+The data was extracted from the 1974 Motor Trend US magazine,and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973-74 models).
+
+## Data Details
+A data frame with 32 observations on 11 variables.
+
+```{r, echo= FALSE}
+tableData <- data.frame(c("mpg","cyl","disp","hp","drat",
+                          "wt","qsec","vs","am","gear","car"
+                          ),
+                        c("Miles/(US) gallon",
+                          "Number of cylinders",
+                          "Displacement (cu.in.)",
+                          "Gross horsepower",
+                          "Rear axle ratio",
+                          "Weight (lb/1000)",
+                          "1/4 mile time",
+                          "V/S",
+                          "Transmission (0 = automatic, 1 = manual)",
+                          "Number of forward gears",
+                          "Number of carburetors"
+                          )
+                        )
+knitr::kable(tableData,col.names=c("Variable","Description"),align="ll",
+             format="html")
+```
+
+## Data Sample
+```{r, echo = TRUE}
+data(mtcars)
+head(mtcars, n=3)
+#str(mtcars)
+#summary(mtcars)
+```
+
+## Application
+The application lets you examine the relationship of various variables with the fuel consumption (mpg). The application allows users to select variables to examine their univariate linear regression results in relation to mpg. The box plot is hsown in a different tab, where users can choose to include or omit to show outliers.
+
+## Screenshot - Box Plot
+```{r fig.width=8,fit.height=4, echo=FALSE}
+library(jpeg)
+library(grid)
+img <- readJPEG("Images/Box Plot.jpg")
+   grid.raster(img)
+#![Image: Box Plot Screenshot](Images/Box Plot.jpg)
+```
+
+## Screenshot - Regression Model
+```{r fig.width=8,fit.height=4, echo=FALSE}
+library(jpeg)
+library(grid)
+img <- readJPEG("Images/Regression Model.jpg")
+   grid.raster(img)
+#![Image: Regression Model Screenshot](Images/Regression Model.jpg)
+```
+
+## Code
+The code for the application can be found in the GitHub repository located [here](https://github.com/sregmi84/Developing-Data-Products---Data-Science):
+[https://github.com/sregmi84/Developing-Data-Products---Data-Science](https://github.com/sregmi84/Developing-Data-Products---Data-Science)
